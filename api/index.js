@@ -1,20 +1,25 @@
+// server.js
 const express = require('express');
-const app = express();
 const fs = require('fs');
-const updateThisAnime = require('../anime.js');
+const { fetchDataWithCookie } = require('../anime.js'); // Ubah sesuai dengan path file anime.js
 
-// Endpoint untuk mengeksekusi animeUpdater setiap 1 jam
-app.get('/update-anime', async (req, res) => {
-  try {
-    await updateThisAnime(); // Panggil fungsi animeUpdater
-    res.send('Anime update process started.');
-  } catch (e){
-    console.log(e)
-  }
+const app = express();
+const PORT = 3000; // Port yang digunakan, sesuaikan jika diperlukan
+
+// Middleware untuk mengeksekusi animeScript saat mengakses URL /anime
+app.get('/anime', async (req, res) => {
+   
+        await fetchDataWithCookie(); // Jalankan animeScript
+        const jsonData = fs.readFileSync('update-anime-web.json', 'utf8');
+        res.json(JSON.parse(jsonData));
+  
 });
 
-// Port server Express
-const PORT = process.env.PORT || 3000;
+app.get('/', (req, res) => {
+res.send('api aktif')
+});
+
+// Start server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
