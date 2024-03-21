@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const updateThisAnime = require('./anime.js');
+const updateThisAnime = require('../anime.js');
 
 // Endpoint untuk mengeksekusi animeUpdater setiap 1 jam
 app.get('/update-anime', async (req, res) => {
