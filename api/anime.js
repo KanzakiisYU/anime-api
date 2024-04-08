@@ -144,7 +144,7 @@ $getDesc('div.bixbox.animefull > div > div.infox > div > div.info-content > div.
     newVideos.sort((a, b) => a.list - b.list);
 
     // Baca data lama dari file JSON
-    let oldVideos = readJsonFile("update-anime-web.json");
+    let oldVideos = readJsonFile("/tmp/update-anime-web.json");
 
     // Bandingkan dengan data lama untuk menentukan isNewAnime
     newVideos.forEach((video) => {
@@ -173,7 +173,7 @@ $getDesc('div.bixbox.animefull > div > div.infox > div > div.info-content > div.
     const updatedList = newVideos.slice(0, 6);
     saveToJson(
       { isUpdate: isUpdate, "update-anime-web": updatedList },
-      "update-anime-web.json",
+      "/tmp/update-anime-web.json",
     );
     console.log("Data saved successfully.");
   } catch (error) {
