@@ -10,7 +10,7 @@ const PORT = 3000; // Port yang digunakan, sesuaikan jika diperlukan
 app.get('/anime', async (req, res) => {
    
         await fetchDataWithCookie(); // Jalankan animeScript
-        const jsonData = fs.readFileSync('./update-anime-web.json');
+        const jsonData = fs.readFileSync('/tmp/update-anime-web.json');
         res.json(JSON.parse(jsonData));
   
 });
