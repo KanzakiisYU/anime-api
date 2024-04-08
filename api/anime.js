@@ -62,7 +62,7 @@ async function fetchDataWithCookie() {
           streamUrl: "",
         };
         getEpisodeLink.push(
-          delay(3000) // Delay 3 detik (3000 milidetik)
+         
             .then(() => axios.get(slug))
             .then((response) => {
               const animeHtml = response.data;
