@@ -63,7 +63,7 @@ async function fetchDataWithCookie() {
         };
         getEpisodeLink.push(
          
-            .then(() => axios.get(slug))
+          axios.get(slug)
             .then((response) => {
               const animeHtml = response.data;
               const $anime = cheerio.load(animeHtml);
